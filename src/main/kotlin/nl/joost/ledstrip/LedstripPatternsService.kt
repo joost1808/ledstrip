@@ -30,7 +30,7 @@ class LedstripPatternsService (
 
     suspend fun rainbow(delay: Long) {
         while (true) {
-            logger.info("Ik ben aan het whilen in rainbow a mattie")
+            logger.info("Rainbow")
             for (x in 0..256) {
                 for (y in 0..ledstrip.ledsCount) {
                     val color: Color = wheel(Position(((y * 256 / ledstrip.ledsCount) + x) and 255))
@@ -44,7 +44,7 @@ class LedstripPatternsService (
 
     suspend fun kitt (r: Int, g: Int, b: Int, delay: Long) {
         while(true) {
-            logger.info("Ik ben aan het kitten")
+            logger.info("Kit")
             for (i in 0..ledstrip.ledsCount-5) {
                 ledstrip.setStrip(0,0,0)
                 ledstrip.setPixel(i, r/10, g/10, b/10)
@@ -60,7 +60,7 @@ class LedstripPatternsService (
 
     suspend fun wave(r: Int, g: Int, b: Int, delay: Long) {
         while (true) {
-            logger.info("Ik ben aan het waven")
+            logger.info("Wave")
             for (i in 0..ledstrip.ledsCount * 2) {
                 for (j in 0..ledstrip.ledsCount) {
                     ledstrip.setPixel(j,
@@ -81,7 +81,7 @@ class LedstripPatternsService (
 
     suspend fun runningLights(r: Int, g: Int, b: Int, delay: Long) {
         while (true) {
-            logger.info("Ik ben lichten aan het rennen")
+            logger.info("RunningLights")
             val position = Position(0)
             for (i in 0..ledstrip.ledsCount * 2) {
                 position.pos++
