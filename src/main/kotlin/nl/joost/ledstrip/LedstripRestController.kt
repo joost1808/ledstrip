@@ -54,7 +54,7 @@ class LedstripRestController (
     @GetMapping ("on/color/{red}/{green}/{blue}")
     fun customColor(@PathVariable red: Int, @PathVariable green: Int, @PathVariable blue: Int) {
         runBlocking {
-            logger.info("Custom Statisch")
+            logger.info("Custom statisch")
             channelHandler.channel.send(Static(red, green, blue))
         }
     }
