@@ -12,9 +12,12 @@ export class LedstripInterfaceService {
   constructor(private http: HttpClient) {
   }
 
-  public handleLedstripRequest(route: string, color: any) {
+  public handleLedstripRequest(route: string, color: ColorModel) {
     const params = new HttpParams()
-    .set('color', color.target.value);
+    .set('r', String(color.red))
+    .set('g', String(color.green))
+    .set('b', String(color.blue))
+    .set('brightness', String(color.alpha));
     const endpointUrl = this.serverUrl + route;
     return this.http.get(endpointUrl, {params});
   }

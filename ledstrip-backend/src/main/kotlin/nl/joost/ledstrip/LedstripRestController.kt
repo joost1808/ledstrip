@@ -46,17 +46,17 @@ class LedstripRestController (
         }
     }
 
-    @GetMapping ("on/color")
-    @ResponseStatus(HttpStatus.OK)
-    fun predefinedColor(@RequestParam (name="color", required = true) color: Color,
-                        @RequestParam (name="brightness", required = true) brightness: Int?) {
-        runBlocking {
-            logger.info("Statisch")
-            channelHandler.channel.send(Static(color.red, color.green, color.blue, brightness))
-        }
-    }
+//    @GetMapping ("on/color")
+//    @ResponseStatus(HttpStatus.OK)
+//    fun predefinedColor(@RequestParam (name="color", required = true) color: Color,
+//                        @RequestParam (name="brightness", required = true) brightness: Int?) {
+//        runBlocking {
+//            logger.info("Statisch")
+//            channelHandler.channel.send(Static(color.red, color.green, color.blue, brightness))
+//        }
+//    }
 
-    @GetMapping ("on/color/{red}/{green}/{blue}/{brightness}")
+    @GetMapping ("on/color")
     fun customColor(
         @RequestParam (name="red", required = true) red: Int,
         @RequestParam (name="green", required = true) green: Int,
