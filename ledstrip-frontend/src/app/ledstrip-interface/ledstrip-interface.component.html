@@ -1,0 +1,11 @@
+<div class="mw9 center pa5">
+  <div class="pa2 pb5">
+    <h2 class="f3 ma0">Choose Color</h2>
+  </div>
+  <form [formGroup]="colorPicker" (ngSubmit)="handleColorRequest()">
+    <div class="pb4 flex">
+      <input formControlName="color" ejs-colorpicker type="color" class="w-100" id="colorpicker" [inline]="true"
+             [showButtons]="true"/>
+    </div>
+  </form>
+</div>

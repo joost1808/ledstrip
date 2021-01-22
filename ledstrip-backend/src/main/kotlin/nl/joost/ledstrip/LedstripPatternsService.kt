@@ -74,8 +74,9 @@ class LedstripPatternsService (
         }
     }
 
-    suspend fun static(r: Int, g: Int, b: Int) {
+    suspend fun static(r: Int, g: Int, b: Int, a: Int) {
         ledstrip.setStrip(r, g, b)
+        ledstrip.brightness = a
         ledstrip.render()
     }
 

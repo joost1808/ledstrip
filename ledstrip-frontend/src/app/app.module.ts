@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LedstripInterfaceComponent } from './ledstrip-interface/ledstrip-interface.component';
+import {ColorPickerModule} from '@syncfusion/ej2-angular-inputs';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LedstripInterfaceComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ColorPickerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

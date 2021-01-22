@@ -29,7 +29,7 @@ class ChannelHandler(
                 launch {
                     when (p) {
                         is Rainbow -> {
-                            logger.info("Ik ga rainbow doen")
+                            logger.info("Ik ga Rainbow doen")
                             ledstripPatternsService.rainbow(p.delay?: 20)
                         }
                         is Kitt -> {
@@ -42,7 +42,7 @@ class ChannelHandler(
                         }
                         is Static -> {
                             logger.info("Ik ga Static doen")
-                            ledstripPatternsService.static(p.r, p.g, p.b)
+                            ledstripPatternsService.static(p.r, p.g, p.b, p.a?: 255)
                         }
                         is RunningLights -> {
                             logger.info("Ik ga RunningLights doen")
