@@ -1,4 +1,4 @@
-FROM nginx:1.19.6
+FROM arm32v7/nginx:1.19
 
 ENV TZ=Europe/Amsterdam
 

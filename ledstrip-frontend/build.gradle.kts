@@ -1,7 +1,7 @@
-version = "1.2"
+version = "1.3"
 
 tasks {
-  val build by register("build") {
+  register("docker") {
     description = "Builds production compiled code and puts it into a nginx docker container"
     doLast {
       println("Building prodBuild")
