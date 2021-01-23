@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LedstripInterfaceComponent } from './ledstrip-interface/ledstrip-interface.component';
 import {ColorPickerModule} from '@syncfusion/ej2-angular-inputs';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ColorPickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

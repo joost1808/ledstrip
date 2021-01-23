@@ -21,28 +21,31 @@ class LedstripRestController (
     }
 
     @GetMapping ("on/rainbow")
-    fun rainbow(@RequestParam (name="delay", required = false) delay: Long?) {
+    fun rainbow(@RequestParam (name="delay", required = false) delay: Long?,
+                @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {
             logger.info("Regenboogje")
-            channelHandler.channel.send(Rainbow(delay))
+            channelHandler.channel.send(Rainbow(delay, brightness))
         }
     }
 
     @GetMapping ("on/kitt")
     fun kitt (@RequestParam (name="color", required = true) color: Color,
-              @RequestParam (name="delay", required = false) delay: Long?) {
+              @RequestParam (name="delay", required = false) delay: Long?,
+              @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {
             logger.info("Kitt")
-            channelHandler.channel.send(Kitt(color.red, color.green, color.blue, delay))
+            channelHandler.channel.send(Kitt(color.red, color.green, color.blue, delay, brightness))
         }
     }
 
     @GetMapping ("on/wave")
     fun wave(@RequestParam (name="color", required = true) color: Color,
-             @RequestParam (name="delay", required = false) delay: Long?) {
+             @RequestParam (name="delay", required = false) delay: Long?,
+             @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {
             logger.info("Wave")
-            channelHandler.channel.send(Wave(color.red, color.green, color.blue, delay))
+            channelHandler.channel.send(Wave(color.red, color.green, color.blue, delay, brightness))
         }
     }
 
@@ -57,6 +60,7 @@ class LedstripRestController (
 //    }
 
     @GetMapping ("on/color")
+    @ResponseStatus(HttpStatus.OK)
     fun customColor(
         @RequestParam (name="red", required = true) red: Int,
         @RequestParam (name="green", required = true) green: Int,

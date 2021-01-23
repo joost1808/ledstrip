@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  ledstrip-frontend:
+    image: "joost1808/ledstrip-frontend:1.1"
+    ports:
+    - "8080:8080"
+  ledstrip-backend:
+    image: "joost1808/ledstrip-backend:1.0"
+    devices:
+      - "/dev/gpiomem:/dev/gpiomem"

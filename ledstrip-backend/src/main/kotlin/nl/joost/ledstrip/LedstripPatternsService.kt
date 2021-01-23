@@ -28,7 +28,7 @@ class LedstripPatternsService (
         val logger = LoggerFactory.getLogger(this::class.java)
     }
 
-    suspend fun rainbow(delay: Long) {
+    suspend fun rainbow(delay: Long, brightness: Int) {
         while (true) {
             logger.info("Rainbow")
             for (x in 0..256) {
@@ -36,13 +36,14 @@ class LedstripPatternsService (
                     val color: Color = wheel(Position(((y * 256 / ledstrip.ledsCount) + x) and 255))
                     ledstrip.setPixel(y, color.red, color.green, color.blue)
                 }
+                ledstrip.brightness = brightness
                 ledstrip.render()
                 delay(delay)
             }
         }
     }
 
-    suspend fun kitt (r: Int, g: Int, b: Int, delay: Long) {
+    suspend fun kitt (r: Int, g: Int, b: Int, delay: Long, brightness: Int) {
         while(true) {
             logger.info("Kit")
             for (i in 0..ledstrip.ledsCount-5) {
@@ -52,13 +53,14 @@ class LedstripPatternsService (
                     ledstrip.setPixel(i+j, r, g, b)
                 }
                 ledstrip.setPixel(i+5+1, r/10, g/10, b/10)
+                ledstrip.brightness = brightness
                 ledstrip.render()
                 delay(delay)
             }
         }
     }
 
-    suspend fun wave(r: Int, g: Int, b: Int, delay: Long) {
+    suspend fun wave(r: Int, g: Int, b: Int, delay: Long, brightness: Int) {
         while (true) {
             logger.info("Wave")
             for (i in 0..ledstrip.ledsCount * 2) {
@@ -68,15 +70,16 @@ class LedstripPatternsService (
                             ((((sin(((j + i)/3.5)) * 127 + 128) / 355) * g).toInt()),
                             ((((sin(((j + i)/3.5)) * 127 + 128) / 355) * b).toInt()))
                 }
+                ledstrip.brightness = brightness
                 ledstrip.render()
                 delay(delay)
             }
         }
     }
 
-    suspend fun static(r: Int, g: Int, b: Int, a: Int) {
+    suspend fun static(r: Int, g: Int, b: Int, brightness: Int) {
         ledstrip.setStrip(r, g, b)
-        ledstrip.brightness = a
+        ledstrip.brightness = brightness
         ledstrip.render()
     }
 

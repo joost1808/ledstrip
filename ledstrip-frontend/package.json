@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prodBuild": "ng build --prod=true",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start-local": "ng serve --proxy-config proxy.conf.json --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {

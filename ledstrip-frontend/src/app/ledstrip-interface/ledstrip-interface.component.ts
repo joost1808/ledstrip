@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ColorModel} from '../models/color.model';
 import {FormBuilder} from '@angular/forms';
 import {LedstripInterfaceService} from '../services/ledstrip-interface.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-ledstrip-interface',
@@ -23,7 +24,15 @@ export class LedstripInterfaceComponent implements OnInit {
 
   handleColorRequest() {
     console.log(this.hexToColorModel(this.colorPicker.controls.color.value));
-    this.service.handleLedstripRequest('on/color', this.hexToColorModel(this.colorPicker.controls.color.value));
+    this.service.handleCustomColorRequest(this.hexToColorModel(this.colorPicker.controls.color.value))
+    .subscribe(
+      _ => {
+        console.log('Het is gelukt');
+      },
+      (data: HttpErrorResponse) => {
+        console.log(data.error);
+      }
+    );
   }
 
   hexToColorModel(hex: string) {
