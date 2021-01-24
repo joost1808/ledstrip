@@ -1,13 +1,13 @@
 export class ColorModel {
-  red: number;
-  green: number;
-  blue: number;
-  alpha: number;
+  r: number;
+  g: number;
+  b: number;
+  a: number;
 
-  constructor(red: number, green: number, blue: number, alpha: number = 100) {
-    this.red = red;
-    this.green = green;
-    this.blue = blue;
-    this.alpha = alpha;
+  constructor(r: number, g: number, b: number, a: number = 100) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
+    this.a = a;
   }
 }

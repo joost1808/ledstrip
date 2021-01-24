@@ -10,11 +10,15 @@ import {HttpErrorResponse} from '@angular/common/http';
   styleUrls: ['./ledstrip-interface.component.scss']
 })
 export class LedstripInterfaceComponent implements OnInit {
-  colorPicker = this.formBuilder.group({
-    color: ''
+  customColorPicker = this.formBuilder.group({
+    customColor: ''
   });
 
-  color: ColorModel;
+  customColorPattern = this.formBuilder.group({
+    patternColor: ''
+  });
+
+  buttonType: string;
 
   constructor(private formBuilder: FormBuilder, private service: LedstripInterfaceService) {
   }
@@ -23,8 +27,7 @@ export class LedstripInterfaceComponent implements OnInit {
   }
 
   handleColorRequest() {
-    console.log(this.hexToColorModel(this.colorPicker.controls.color.value));
-    this.service.handleCustomColorRequest(this.hexToColorModel(this.colorPicker.controls.color.value))
+    this.service.handleCustomColorRequest(this.hexToColorModel(this.customColorPicker.controls.customColor.value))
     .subscribe(
       _ => {
         console.log('Het is gelukt');
@@ -33,6 +36,24 @@ export class LedstripInterfaceComponent implements OnInit {
         console.log(data.error);
       }
     );
+  }
+
+  handlePatternRequest(buttonType) {
+    if (buttonType === 'rainbow') {
+      console.log(buttonType);
+      this.service.handleRainbowRequest()
+      .subscribe();
+    }
+    if (buttonType === 'kitt') {
+      console.log(buttonType);
+      this.service.handleKittRequest(this.hexToColorModel(this.customColorPattern.controls.patternColor.value))
+      .subscribe();
+    }
+    if (buttonType === 'wave') {
+      console.log(buttonType);
+      this.service.handleWaveRequest(this.hexToColorModel(this.customColorPattern.controls.patternColor.value))
+      .subscribe();
+    }
   }
 
   hexToColorModel(hex: string) {

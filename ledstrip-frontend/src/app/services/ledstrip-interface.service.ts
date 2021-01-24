@@ -15,10 +15,39 @@ export class LedstripInterfaceService {
   public handleCustomColorRequest(color: ColorModel): Observable<any> {
     const apiUrl = environment.apiUrl;
     const params = new HttpParams()
-    .set('red', String(color.red))
-    .set('green', String(color.green))
-    .set('blue', String(color.blue))
-    .set('brightness', String(color.alpha));
+    .set('red', String(color.r))
+    .set('green', String(color.g))
+    .set('blue', String(color.b))
+    .set('brightness', String(color.a));
     return this.http.get(`${apiUrl}on/color`, {params});
+  }
+
+  public handleRainbowRequest(delay: number = 20, brightness: number = 10): Observable<any> {
+    const apiUrl = environment.apiUrl;
+    const params = new HttpParams()
+    .set('delay', String(delay))
+    .set('brightness', String(brightness));
+    return this.http.get(`${apiUrl}on/rainbow`, {params});
+  }
+
+  public handleKittRequest(color: ColorModel, delay: number = 20): Observable<any> {
+    const apiUrl = environment.apiUrl;
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(color);
+    const params = new HttpParams()
+    .set('delay', String(delay))
+    .set('brightness', String(color.a));
+    return this.http.post(`${apiUrl}on/kitt`, body, {...headers, params});
+  }
+
+  public handleWaveRequest(color: ColorModel, delay: number = 20): Observable<any> {
+    const apiUrl = environment.apiUrl;
+    const params = new HttpParams()
+    .set('red', String(color.r))
+    .set('green', String(color.g))
+    .set('blue', String(color.b))
+    .set('delay', String(delay))
+    .set('brightness', String(color.a));
+    return this.http.get(`${apiUrl}on/wave`, {params});
   }
 }

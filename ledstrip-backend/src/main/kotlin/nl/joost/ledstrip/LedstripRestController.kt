@@ -30,9 +30,9 @@ class LedstripRestController (
         }
     }
 
-    @GetMapping ("on/kitt")
+    @PostMapping ("on/kitt")
     @ResponseStatus(HttpStatus.OK)
-    fun kitt (@RequestParam (name="color", required = true) color: Color,
+    fun kitt (@RequestBody color: Color,
               @RequestParam (name="delay", required = false) delay: Long?,
               @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {

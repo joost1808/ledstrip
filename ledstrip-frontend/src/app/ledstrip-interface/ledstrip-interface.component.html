@@ -2,10 +2,29 @@
   <div class="pa2 pb5">
     <h2 class="f3 ma0">Choose Color</h2>
   </div>
-  <form [formGroup]="colorPicker" (ngSubmit)="handleColorRequest()">
-    <div class="pb4 flex">
-      <input formControlName="color" ejs-colorpicker type="color" class="w-100" id="colorpicker" [inline]="true"
-             [showButtons]="true"/>
-    </div>
-  </form>
+  <div>
+    <form [formGroup]="customColorPicker" (ngSubmit)="handleColorRequest()">
+      <h3 class="f3 ma0">Custom color</h3>
+      <div class="pb4 flex">
+        <input formControlName="customColor" ejs-colorpicker
+               type="color" class="w-100" id="customColorPicker"
+               [inline]="true"
+               [showButtons]="true"/>
+      </div>
+    </form>
+    <form [formGroup]="customColorPattern" (ngSubmit)="handlePatternRequest(buttonType)">
+      <h3 class="f3 ma0">Patterns</h3>
+      <div class="pb4 flex flex-column">
+        <input formControlName="patternColor" ejs-colorpicker type="color" class="w-100"
+               id="customColorPattern"
+               [inline]="true"
+               [showButtons]="false"/>
+        <input type="text"/>
+        <button class="button" type="submit" (click)="handlePatternRequest('rainbow')">Rainbow
+        </button>
+        <button class="button" type="submit" (click)="handlePatternRequest('kitt')">Kitt</button>
+        <button class="button" type="submit" (click)="handlePatternRequest('wave')">Wave</button>
+      </div>
+    </form>
+  </div>
 </div>
