@@ -3,13 +3,15 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {ColorModel} from '../models/color.model';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {LedstripControllerService} from './LedstripController.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LedstripInterfaceService {
+export class LedstripInterfaceService extends LedstripControllerService {
 
   constructor(private http: HttpClient) {
+    super();
   }
 
   public handleCustomColorRequest(color: ColorModel): Observable<any> {
@@ -32,12 +34,13 @@ export class LedstripInterfaceService {
 
   public handleKittRequest(color: ColorModel, delay: number = 20): Observable<any> {
     const apiUrl = environment.apiUrl;
-    const headers = {'content-type': 'application/json'};
+    const httpOptions = this.getDefaultOptions();
     const body = JSON.stringify(color);
     const params = new HttpParams()
+    .set('color', body)
     .set('delay', String(delay))
     .set('brightness', String(color.a));
-    return this.http.post(`${apiUrl}on/kitt`, body, {...headers, params});
+    return this.http.post(`${apiUrl}on/kitt`, {...httpOptions, params});
   }
 
   public handleWaveRequest(color: ColorModel, delay: number = 20): Observable<any> {
