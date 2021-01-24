@@ -30,7 +30,7 @@ class LedstripRestController (
         }
     }
 
-    @PostMapping ("on/kitt")
+    @PostMapping(path = ["on/kitt"], consumes = ["application/json"])
     @ResponseStatus(HttpStatus.OK)
     fun kitt (@RequestBody color: Color,
               @RequestParam (name="delay", required = false) delay: Long?,
