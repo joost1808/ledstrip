@@ -42,11 +42,11 @@ class ChannelHandler(
                         }
                         is Static -> {
                             logger.info("Ik ga Static doen")
-                            ledstripPatternsService.static(p.r, p.g, p.b, p.a?: 255)
+                            ledstripPatternsService.static(p.r, p.g, p.b, p.brightness?: 255)
                         }
                         is RunningLights -> {
                             logger.info("Ik ga RunningLights doen")
-                            ledstripPatternsService.runningLights(p.r, p.g, p.b, p.delay?: 20)
+                            ledstripPatternsService.runningLights(p.r, p.g, p.b, p.delay?: 20, p.brightness?: 255)
                         }
                     }
                 }

@@ -83,7 +83,7 @@ class LedstripPatternsService (
         ledstrip.render()
     }
 
-    suspend fun runningLights(r: Int, g: Int, b: Int, delay: Long) {
+    suspend fun runningLights(r: Int, g: Int, b: Int, delay: Long, brightness: Int) {
         while (true) {
             logger.info("RunningLights")
             val position = Position(0)
@@ -95,6 +95,7 @@ class LedstripPatternsService (
                             ((((sin((j + position.pos).toDouble()) * 127 + 128) / 255) * g).toInt()),
                             ((((sin((j + position.pos).toDouble()) * 127 + 128) / 255) * b).toInt()))
                 }
+                ledstrip.brightness = brightness
                 ledstrip.render()
                 delay(delay)
             }

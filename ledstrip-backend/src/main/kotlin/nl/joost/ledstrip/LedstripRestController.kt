@@ -21,6 +21,7 @@ class LedstripRestController (
     }
 
     @GetMapping ("on/rainbow")
+    @ResponseStatus(HttpStatus.OK)
     fun rainbow(@RequestParam (name="delay", required = false) delay: Long?,
                 @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {
@@ -30,6 +31,7 @@ class LedstripRestController (
     }
 
     @GetMapping ("on/kitt")
+    @ResponseStatus(HttpStatus.OK)
     fun kitt (@RequestParam (name="color", required = true) color: Color,
               @RequestParam (name="delay", required = false) delay: Long?,
               @RequestParam (name="brightness", required = false) brightness: Int?) {
@@ -40,6 +42,7 @@ class LedstripRestController (
     }
 
     @GetMapping ("on/wave")
+    @ResponseStatus(HttpStatus.OK)
     fun wave(@RequestParam (name="color", required = true) color: Color,
              @RequestParam (name="delay", required = false) delay: Long?,
              @RequestParam (name="brightness", required = false) brightness: Int?) {
@@ -73,11 +76,13 @@ class LedstripRestController (
     }
 
     @GetMapping ("on/runninglights/{color}", "on/runninglights/{color}/{delay}")
+    @ResponseStatus(HttpStatus.OK)
     fun runningLights(@RequestParam (name="color", required = true) color: Color,
-                      @RequestParam (name="delay", required = false) delay: Long?) {
+                      @RequestParam (name="delay", required = false) delay: Long?,
+                      @RequestParam (name="brightness", required = false) brightness: Int?) {
         runBlocking {
             logger.info("Running Lights")
-            channelHandler.channel.send(RunningLights(color.red, color.green, color.blue, delay))
+            channelHandler.channel.send(RunningLights(color.red, color.green, color.blue, delay, brightness))
         }
     }
 }
