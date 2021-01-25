@@ -45,7 +45,7 @@ class LedstripPatternsService (
 
     suspend fun kitt (r: Int, g: Int, b: Int, delay: Long, brightness: Int) {
         while(true) {
-            logger.info("Kit")
+            logger.info("Kitt")
             for (i in 0..ledstrip.ledsCount-5) {
                 ledstrip.setStrip(0,0,0)
                 ledstrip.setPixel(i, r/10, g/10, b/10)

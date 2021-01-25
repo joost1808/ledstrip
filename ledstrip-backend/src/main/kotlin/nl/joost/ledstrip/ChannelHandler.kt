@@ -30,23 +30,49 @@ class ChannelHandler(
                     when (p) {
                         is Rainbow -> {
                             logger.info("Ik ga Rainbow doen")
-                            ledstripPatternsService.rainbow(p.delay?: 20, p.brightness?: 255)
+                            ledstripPatternsService.rainbow(
+                                p.delay?: 20,
+                                p.brightness?: 255
+                            )
                         }
                         is Kitt -> {
                             logger.info("Ik ga Kitt doen")
-                            ledstripPatternsService.kitt(p.r, p.g, p.b, p.delay?: 20, p.brightness?: 255)
+                            ledstripPatternsService.kitt(
+                                p.colorPattern.r,
+                                p.colorPattern.g,
+                                p.colorPattern.b,
+                                p.colorPattern.delay,
+                                p.colorPattern.brightness
+                            )
                         }
                         is Wave -> {
                             logger.info("k ga Wave doen")
-                            ledstripPatternsService.wave(p.r, p.g, p.b, p.delay?: 20, p.brightness?: 255)
+                            ledstripPatternsService.wave(
+                                p.colorPattern.r,
+                                p.colorPattern.g,
+                                p.colorPattern.b,
+                                p.colorPattern.delay,
+                                p.colorPattern.brightness
+                            )
                         }
                         is Static -> {
                             logger.info("Ik ga Static doen")
-                            ledstripPatternsService.static(p.r, p.g, p.b, p.brightness?: 255)
+                            ledstripPatternsService.static(
+                                p.colorBrightness.r,
+                                p.colorBrightness.g,
+                                p.colorBrightness.b,
+                                p.colorBrightness.brightness
+                            )
                         }
                         is RunningLights -> {
                             logger.info("Ik ga RunningLights doen")
-                            ledstripPatternsService.runningLights(p.r, p.g, p.b, p.delay?: 20, p.brightness?: 255)
+                            ledstripPatternsService.runningLights(
+                                p.colorPattern.r,
+                                p.colorPattern.g,
+                                p.colorPattern.b,
+                                p.colorPattern.delay,
+                                p.colorPattern.brightness
+                            )
                         }
                     }
                 }

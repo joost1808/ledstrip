@@ -2,7 +2,7 @@ package nl.joost.ledstrip
 
 sealed class Pattern
 class Rainbow (val delay: Long?, val brightness: Int?): Pattern()
-class Kitt (val r: Int, val g: Int, val b: Int, val delay: Long?, val brightness: Int?): Pattern()
-class Wave (val r: Int, val g: Int, val b: Int, val delay: Long?, val brightness: Int?): Pattern()
-class Static (val r: Int, val g: Int, val b: Int, val brightness: Int?): Pattern()
-class RunningLights (val r: Int, val g: Int, val b: Int, val delay: Long?, val brightness: Int?): Pattern()
+class Kitt (val colorPattern: ColorPattern): Pattern()
+class Wave (val colorPattern: ColorPattern): Pattern()
+class Static (val colorBrightness: ColorBrightness): Pattern()
+class RunningLights (val colorPattern: ColorPattern): Pattern()
