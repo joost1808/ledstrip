@@ -1,4 +1,6 @@
-export class ColorPatternsModel {
+import {ColorModel} from './color.model';
+
+export class ColorPatternsModel implements ColorModel {
   r: number;
   g: number;
   b: number;

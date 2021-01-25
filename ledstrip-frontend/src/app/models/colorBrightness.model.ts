@@ -1,4 +1,6 @@
-export class ColorBrightnessModel {
+import {ColorModel} from './color.model';
+
+export class ColorBrightnessModel implements ColorModel {
   r: number;
   g: number;
   b: number;
