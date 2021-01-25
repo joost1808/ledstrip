@@ -6,7 +6,7 @@ export class ColorBrightnessModel implements ColorModel {
   b: number;
   a: number;
 
-  constructor(r: number, g: number, b: number, a: number = 100) {
+  constructor(r: number, g: number, b: number, a: number = 10) {
     this.r = r;
     this.g = g;
     this.b = b;

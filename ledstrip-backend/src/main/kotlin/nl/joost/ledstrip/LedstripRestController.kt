@@ -15,11 +15,20 @@ class LedstripRestController (
         val logger = LoggerFactory.getLogger(this::class.java)
     }
 
+    @PostMapping (path = ["on/color"], consumes = ["application/json"])
+    @ResponseStatus(HttpStatus.OK)
+    fun customColor(@RequestBody color: ColorBrightness) {
+        runBlocking {
+            logger.info("Custom static")
+            channelHandler.channel.send(Static(color))
+        }
+    }
+
     @PostMapping (path = ["on/rainbow"], consumes = ["application/json"])
     @ResponseStatus(HttpStatus.OK)
     fun rainbow(@RequestBody color: ColorPattern) {
         runBlocking {
-            logger.info("Regenboogje")
+            logger.info("Rainbow")
             channelHandler.channel.send(Rainbow(color.delay, color.brightness))
         }
     }
@@ -48,15 +57,6 @@ class LedstripRestController (
         runBlocking {
             logger.info("Running Lights")
             channelHandler.channel.send(RunningLights(color))
-        }
-    }
-
-    @PostMapping (path = ["on/color"], consumes = ["application/json"])
-    @ResponseStatus(HttpStatus.OK)
-    fun customColor(@RequestBody color: ColorBrightness) {
-        runBlocking {
-            logger.info("Custom statisch")
-            channelHandler.channel.send(Static(color))
         }
     }
 }
