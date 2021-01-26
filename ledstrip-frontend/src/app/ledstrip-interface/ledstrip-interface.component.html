@@ -1,42 +1,61 @@
-<div class="mw9 center pa5">
-  <div class="pa2 pb5">
-    <h2 class="f3 ma0">Choose Color</h2>
-  </div>
-  <div>
-    <form [formGroup]="customColorPicker" (ngSubmit)="handleColorRequest()">
-      <h3 class="f3 ma0">Custom color</h3>
-      <div class="pb4 flex flex-column">
-        <label for="customColorPicker">
-          Custom color picker
-        </label>
-        <input formControlName="customColor" ejs-colorpicker
-                                                      type="color" class="w-100" id="customColorPicker"
-                                                      [inline]="true"
-                                                      [showButtons]="true"/>
-      </div>
-    </form>
-    <form [formGroup]="customColorPattern" (ngSubmit)="handlePatternRequest(buttonType)">
-      <h3 class="f3 ma0">Patterns</h3>
-      <div class="pb4 flex flex-column">
-        <label for="customColorPattern">
-          Pattern color picker
-        </label>
-        <input formControlName="patternColor" ejs-colorpicker type="color" class="w-100"
-                                                       id="customColorPattern"
-                                                       [inline]="true"
-                                                       [showButtons]="false"/>
-        <label for="delay">
-          Delay
-        </label>
-        <input id="delay" type="text" formControlName="delay"/>
-        <button class="button" type="submit" (click)="handlePatternRequest('rainbow')">Rainbow
-        </button>
-        <button class="button" type="submit" (click)="handlePatternRequest('kitt')">Kitt</button>
-        <button class="button" type="submit" (click)="handlePatternRequest('wave')">Wave</button>
-        <button class="button" type="submit" (click)="handlePatternRequest('runninglights')">Running
-          lights
-        </button>
-      </div>
-    </form>
+<div class="center ph3-ns">
+  <div class="cf ph2-ns">
+    <div class="fl w-25 pa2"></div>
+    <div class="fl w-25 pa4">
+
+      <form [formGroup]="customColorPicker" (ngSubmit)="handleColorRequest()">
+        <h3 class="f3 ma0">Custom color</h3>
+        <div class="pb4 flex flex-column">
+          <div class="center">
+            <label for="customColorPicker">Custom color picker</label>
+            <div class="mv1">
+              <input formControlName="customColor" ejs-colorpicker type="color"
+                     cssClass="e-container"
+                     id="customColorPicker" [inline]="true" [showButtons]="true"/>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="fl w-25 pa4">
+
+      <form [formGroup]="customColorPattern" (ngSubmit)="handlePatternRequest(buttonType)">
+        <h3 class="f3 ma0">Patterns</h3>
+        <div class="pb4 flex flex-column">
+          <div class="center">
+            <label for="customColorPattern">Pattern color picker</label>
+            <div class="mv1">
+              <input formControlName="patternColor" ejs-colorpicker type="color"
+                     cssClass="e-container"
+                     id="customColorPattern" [inline]="true" [showButtons]="false"/>
+            </div>
+          </div>
+          <label for="delay">Delay</label>
+          <input id="delay" type="text" formControlName="delay" [value]="10"/>
+          <div class="flex flex-wrap">
+            <button class="f6 dim br2 ba ph3 pv2 mv2 dib dark-gray fl w-50" type="submit"
+                    (click)="handlePatternRequest('rainbow')">
+              Rainbow
+            </button>
+            <button class="f6 link dim br2 ba ph3 pv2 mv2 dib dark-gray fl w-50" type="submit"
+                    (click)="handlePatternRequest('kitt')">Kitt
+            </button>
+            <button class="f6 link dim br2 ba ph3 pv2 mb2 dib dark-gray fl w-50" type="submit"
+                    (click)="handlePatternRequest('wave')">Wave
+            </button>
+            <button class="f6 link dim br2 ba ph3 pv2 mb2 dib dark-gray fl w-50" type="submit"
+                    (click)="handlePatternRequest('runninglights')">
+              Running lights
+            </button>
+
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+    <div class="fl w-25 pa2"></div>
   </div>
 </div>

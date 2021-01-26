@@ -1,0 +1,14 @@
+.e-container {
+  box-shadow: 2px 2px 8px 0 rgba( 0, 0, 0, 0.2 );
+  border-radius: .5rem;
+}
+
+.e-container .e-color-picker {
+  width: 100%;
+}
+
+.e-container .e-hsv-container {
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+

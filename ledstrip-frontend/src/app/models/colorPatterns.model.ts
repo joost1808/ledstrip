@@ -4,14 +4,14 @@ export class ColorPatternsModel implements ColorModel {
   r: number;
   g: number;
   b: number;
-  a: number;
+  brightness: number;
   delay: number;
 
-  constructor(r: number, g: number, b: number, a: number = 10, delay: number = 20) {
+  constructor(r: number = 0, g: number = 0, b: number = 0, brightness: number = 10, delay: number = 20) {
     this.r = r;
     this.g = g;
     this.b = b;
-    this.a = a;
+    this.brightness = brightness;
     this.delay = delay;
   }
 }

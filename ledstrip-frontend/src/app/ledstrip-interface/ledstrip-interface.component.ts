@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {LedstripInterfaceService} from '../services/ledstrip-interface.service';
-import {HttpErrorResponse} from '@angular/common/http';
 import {ColorPatternsModel} from '../models/colorPatterns.model';
 import {ColorBrightnessModel} from '../models/colorBrightness.model';
 
@@ -72,20 +71,28 @@ export class LedstripInterfaceComponent implements OnInit {
   }
 
   hexToColorBrightnessModel(hex: string) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    const a = parseInt(hex.slice(7, 9), 16);
+    if (hex == null) {
+      console.log(hex);
+      return new ColorBrightnessModel(0, 0, 0);
+    } else {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      const a = parseInt(hex.slice(7, 9), 16);
 
-    return new ColorBrightnessModel(r, g, b, a);
+      return new ColorBrightnessModel(r, g, b, a);
+    }
   }
 
   hexToColorPatternModel(hex: string) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    const a = parseInt(hex.slice(7, 9), 16);
-
-    return new ColorPatternsModel(r, g, b, a, this.customColorPattern.controls.delay.value);
+    if (hex) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      const a = parseInt(hex.slice(7, 9), 16);
+      return new ColorPatternsModel(r, g, b, a, +this.customColorPattern.controls.delay.value);
+    } else {
+      return new ColorPatternsModel(0, 0, 0, 10, 20);
+    }
   }
 }
