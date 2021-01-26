@@ -12,7 +12,7 @@ import kotlin.math.sin
 @Service
 class LedstripPatternsService (
         private val ledstrip: LedStrip = Ws281xLedStrip(
-                300,
+                284,
                 18,
                 800000,
                 10,
