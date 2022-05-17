@@ -19,7 +19,7 @@ export class LedstripInterfaceComponent implements OnInit {
     delay: ''
   });
 
-  buttonType: string = "";
+  buttonType: string;
 
   constructor(private formBuilder: FormBuilder, private service: LedstripInterfaceService) {
   }
@@ -30,17 +30,17 @@ export class LedstripInterfaceComponent implements OnInit {
   handleColorRequest() {
     this.service.handleCustomColorRequest(
       this.hexToColorBrightnessModel(
-        this.customColorPicker.controls['customColor'].value
+        this.customColorPicker.controls.customColor.value
       )
     ).subscribe();
   }
 
-  handlePatternRequest(buttonType: string) {
+  handlePatternRequest(buttonType) {
     if (buttonType === 'rainbow') {
       console.log(buttonType);
       this.service.handleRainbowRequest(
         this.hexToColorPatternModel(
-          this.customColorPattern.controls['patternColor'].value
+          this.customColorPattern.controls.patternColor.value
         )
       ).subscribe();
     }
@@ -48,7 +48,7 @@ export class LedstripInterfaceComponent implements OnInit {
       console.log(buttonType);
       this.service.handleKittRequest(
         this.hexToColorPatternModel(
-          this.customColorPattern.controls['patternColor'].value
+          this.customColorPattern.controls.patternColor.value
         )
       ).subscribe();
     }
@@ -56,7 +56,7 @@ export class LedstripInterfaceComponent implements OnInit {
       console.log(buttonType);
       this.service.handleWaveRequest(
         this.hexToColorPatternModel(
-          this.customColorPattern.controls['patternColor'].value
+          this.customColorPattern.controls.patternColor.value
         )
       ).subscribe();
     }
@@ -64,7 +64,7 @@ export class LedstripInterfaceComponent implements OnInit {
       console.log(buttonType);
       this.service.handleRunningLightsRequest(
         this.hexToColorPatternModel(
-          this.customColorPattern.controls['patternColor'].value
+          this.customColorPattern.controls.patternColor.value
         )
       ).subscribe();
     }
@@ -90,7 +90,7 @@ export class LedstripInterfaceComponent implements OnInit {
       const g = parseInt(hex.slice(3, 5), 16);
       const b = parseInt(hex.slice(5, 7), 16);
       const a = parseInt(hex.slice(7, 9), 16);
-      return new ColorPatternsModel(r, g, b, a, +this.customColorPattern.controls['delay'].value);
+      return new ColorPatternsModel(r, g, b, a, +this.customColorPattern.controls.delay.value);
     } else {
       return new ColorPatternsModel(0, 0, 0, 10, 20);
     }
